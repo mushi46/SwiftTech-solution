@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Job Applications</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .application {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .application h3 {
+      margin-top: 0;
+    }
+    .btn-group {
+      margin-top: 10px;
+    }
+    .btn-group form {
+      display: inline;
+    }
+    .btn-group button {
+      padding: 6px 12px;
+      margin-right: 5px;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .approve-btn {
+      background-color: #28a745;
+      color: white;
+    }
+    .reject-btn {
+      background-color: #dc3545;
+      color: white;
+    }
+    .status {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Job Applications</h1>
+
+  <% if (applications.length === 0) { %>
+    <p>No job applications submitted yet.</p>
+  <% } else { %>
+    <% applications.forEach(app => { %>
+      <div class="application">
+        <h3><%= app.name %></h3>
+        <p><strong>Email:</strong> <%= app.email %></p>
+        <p><strong>Experience:</strong> <%= app.experience %></p>
+        <p><strong>Message:</strong> <%= app.message %></p>
+        <p><strong>Resume:</strong> 
+          <% if (app.resumeFilePath) { %>
+            <a href="/<%= app.resumeFilePath %>" target="_blank">View Resume</a>
+          <% } else { %>
+            <em>No CV uploaded</em>
+          <% } %>
+        </p>
+        <p class="status">
+          <strong>Status:</strong> 
+          <% if (app.status === 'Approved') { %>
+            ✅ Approved
+          <% } else if (app.status === 'Rejected') { %>
+            ❌ Rejected
+          <% } else { %>
+            ⏳ Pending
+          <% } %>
+        </p>
+
+        <% if (app.status === 'Pending') { %>
+          <div class="btn-group">
+            <form action="/admin/jobs/approve/<%= app._id %>" method="POST">
+              <button class="approve-btn" type="submit">✅ Approve</button>
+            </form>
+            <form action="/admin/jobs/reject/<%= app._id %>" method="POST">
+              <button class="reject-btn" type="submit">❌ Reject</button>
+            </form>
+          </div>
+        <% } %>
+        <p><small>Submitted: <%= app.createdAt.toLocaleString() %></small></p>
+      </div>
+    <% }) %>
+  <% } %>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Apply for a Job</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Job Application Form</h1>
+
+  <form action="/apply" method="POST" enctype="multipart/form-data">
+    <label for="name">Full Name:</label>
+    <input type="text" name="name" required><br><br>
+
+    <label for="email">Email Address:</label>
+    <input type="email" name="email" required><br><br>
+
+   <label for="experience">Experience:</label>
+<select name="experience" required>
+  <option value="">-- Select your experience level --</option>
+  <option value="No experience (Fresher)">No experience (Fresher)</option>
+  <option value="1 - 2 years">1 - 2 years</option>
+  <option value="3 - 5 years">3 - 5 years</option>
+  <option value="6+ years">6+ years</option>
+</select><br><br>
+
+    <label for="message">Why should we hire you?</label><br>
+    <textarea name="message" rows="5" required></textarea><br><br>
+
+    <label for="resume">Upload CV:</label>
+    <input type="file" name="resume" accept=".pdf,.doc,.docx" required><br><br>
+
+    <button type="submit">Submit Application</button>
+  </form>
+</body>
+</html>
