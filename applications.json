@@ -1,1 +1,22 @@
-[]
+[
+  {
+    "id": 1751306965664,
+    "name": "joel",
+    "email": "joelmushi46@gmail.com",
+    "experience": "none",
+    "message": "i can make the company gain more profit by making good logos",
+    "cv": "cv-1751306965590.pdf",
+    "status": "Rejected",
+    "feedback": ""
+  },
+  {
+    "id": 1751353851648,
+    "name": "joel g mushi",
+    "email": "joelmushi46@gmail.com",
+    "experience": "1-2",
+    "message": "i can make logos",
+    "cv": "cv-1751353851592.pdf",
+    "status": "Pending",
+    "feedback": ""
+  }
+]
